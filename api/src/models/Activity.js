@@ -5,12 +5,6 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('activity', {
 
-        id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: true
-        },
-
         name: {
             type: DataTypes.TEXT,
             allowNull: false,
@@ -32,7 +26,7 @@ module.exports = (sequelize) => {
         },
 
         season: {
-            type: DataTypes.ENUM({ values: ['summer', 'autumn', 'winter', 'spring'] }),
+            type: DataTypes.ENUM(['Winter', 'Autumn', 'Spring', 'Summer']),
             allowNull: false,
         },
 
