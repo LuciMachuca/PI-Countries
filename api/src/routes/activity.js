@@ -59,14 +59,14 @@ router.get('/', async (req, res, next) => {
 // ---------------------------------------------------------------------------------------
 
 router.post('/', async (req, res) => {
-    const { id, name, difficulty, duration, season, pais } = req.body;
+    const { name, difficulty, duration, season, pais } = req.body;
 
     //const naMe = name.trim().toLowerCase(); // saca los espacios en blanco y convierte a minúscula
 
     try {
 
         const actDb = await Activity.create({
-            id,
+        
             name,
             difficulty,
             duration,

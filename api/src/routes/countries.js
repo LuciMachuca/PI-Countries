@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
             })
                 ;
 
-            if (searchBar <= 0) {
+            if (searchBar <= 0) {  // o si es null
                 res.status(200).send('No existe ese pais')
             } else {
 

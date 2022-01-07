@@ -2,7 +2,8 @@ const initialState = {
     countries: [],
     allCountries: [],
     activity: [],
-    detail: []
+    detail: [],
+    allContinents: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -65,12 +66,6 @@ function rootReducer(state = initialState, action) {
                 activity: action.payload
             }
 
-        case 'FILTER_BY_CONTINENTS': // el valor del select es lo q le llega a mi acción x payload
-            const continentsFilter = action.payload === 'All' ? state.allCountries : state.allCountries.filter(el => el.continents.includes(action.payload))
-            return {
-                ...state,
-                countries: continentsFilter
-            }
 
         case 'FILTER_BY_ACTIVITY': // el valor del select es lo q le llega a mi acción x payload
             const activityFilter = action.payload === 'All' ? state.allCountries : state.allCountries.filter(el => el.activities.includes(action.payload))
@@ -79,12 +74,22 @@ function rootReducer(state = initialState, action) {
                 countries: activityFilter
             }
 
+
+        case 'FILTER_BY_CONTINENTS': // el valor del select es lo q le llega a mi acción x payload
+            const continentsFilter = action.payload === 'All' ? state.allCountries : state.allCountries.filter(el => el.continents.includes(action.payload))
+            return {
+                ...state,
+                countries: continentsFilter
+            }
+
+
+
         case 'GET_NAME':
 
             //const pokeName = action.payload === null  || action.payload === [] || action.payload.length === 0 ? state.allPokemons : action.payload;
             return {
                 ...state,
-                allCountries: action.payload
+                countries: action.payload
             }
 
         case "GET_DETAIL":
@@ -97,6 +102,16 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state   // no hacemos nada aquí xq creamos en una nueva ruta
             }
+
+        case "SHOW_ACTIVITIES": {
+            return {
+                ...state,
+                countries: state.countries.filter((c) => {
+                    return c.activities.some((a) => a.name === action.payload)
+
+                })
+            }
+        }
 
         default:
             return state;

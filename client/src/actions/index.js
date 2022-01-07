@@ -14,10 +14,35 @@ export function getCountries(){
     };
 }
 
-// FILTRO POR CONTINENTE
-// FILTRO POR ACTIVIDAD TURÍSTICA
+// LISTA DE ACTIVIDADES TURÍSTICAS -> Para el filtrado
+export function listActivity() {
+    return async function (dispatch) {
+        var json = await axios.get('http://localhost:3001/activity', {})
+        return dispatch({
+            type: "LIST_ACTIVITY",
+            payload: json.data
+        });
+    };
+}; 
 
-// ORDEN ALFABÉTICO -> PAISES
+
+// FILTRADO -> ACTIVIDAD TURÍSTICA
+export function filterByActivity(payload) {
+    return {
+        type: 'FILTER_BY_ACTIVITY',
+        payload
+    }
+}
+
+// FILTRAR POR CONTINENTE
+export function filterByContinents(payload) {
+    return {
+        type: 'FILTER_BY_CONTINENTS',
+        payload
+    }
+}
+
+// ORDEN ALFABÉTICO POR PAIS
 export function orderByCountries(payload) {
     return {
         type: 'ORDER_BY_COUNTRIES',
@@ -33,36 +58,9 @@ export function orderByPopulation(payload){
     }
 }
 
-// LISTA DE ACTIVIDADES TURÍSTICAS -> Para el filtrado
-export function listActivity() {
-    return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/activity', {})
-        return dispatch({
-            type: "LIST_ACTIVITY",
-            payload: json.data
-        });
-    };
-}; 
-
-// FILTRO POR ACTIVIDAD TURÍSTICA
-export function filterByActivity(payload) {
-    return {
-        type: 'FILTER_BY_ACTIVITY',
-        payload
-    }
-}
-
-// FILTRO POR CONTINENTE
-export function filterByContinents(payload) {
-    return {
-        type: 'FILTER_BY_CONTINENTS',
-        payload
-    }
-}
-
 // SEARCHBAR -> BUSQUEDA DE PAISES POR NOMBRE
 export function getName(country) {
-    return async function (dispatch) {
+    return async (dispatch) => {
         try {
             var json = await axios.get(`http://localhost:3001/countries?name=${country}`);
             return dispatch({
@@ -98,3 +96,12 @@ export function postActivity(payload) {
         return response;
     }
 }
+
+
+export function showActivities(payload){
+    return{
+        type: 'SHOW_ACTIVITIES',
+        payload
+    }
+}
+
