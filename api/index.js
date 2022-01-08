@@ -32,11 +32,11 @@ let dataCountries = async () => {
             id: c.cca3,
             name: c.name.common,
             continents: c.region,
-            capital: c.capital ? c.capital[0] : 'no hay capital',
+            capital: c.capital ? c.capital[0] : 'There Is No Capital',
             imgbandera: c.flags.png,
-            subregion: c.subregion ? c.subregion : 'no hay subregion',
-            area: parseInt(c.area),
-            population: parseInt(c.population)
+            subregion: c.subregion ? c.subregion : 'There Is No Subregion',
+            area: c.area, // parseInt
+            population: c.population // parseInt
           }
         })
         return countryCreated;

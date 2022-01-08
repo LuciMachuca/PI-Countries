@@ -10,43 +10,37 @@ router.get('/', async (req, res) => {
 
     const { name } = req.query;
 
+    try {
 
-    if (!name) { // Resumen de todos los paises
+        if (!name) { // Resumen de todos los paises
 
 
-        try {
-            const rutaPrincipal = await Country.findAll({
-                attributes: ["id", "imgbandera", "name", "continents"],
-                include: { model: Activity }
-            });
+            //try {
+            const rutaPrincipal = await Country.findAll({ include: Activity });
             res.status(200).send(rutaPrincipal);
 
-        } catch (err) {
-            console.log('Error en los datos de la Ruta Principal');
-        }
+            /* } catch (err) {
+                console.log('Error en los datos de la Ruta Principal');
+            } */
 
-    } else { // búsqueda por nombre
-
-        try {
-            let searchBar = await Country.findOne({
-                attributes: ["id", "imgbandera", "name", "continents"],
-                include: { model: Activity },
-                where: { name: { [Sequelize.Op.iLike]: `${name}` } }
-            })
-                ;
-
-            if (searchBar <= 0) {  // o si es null
-                res.status(200).send('No existe ese pais')
-            } else {
-
-                res.status(200).send(searchBar);
+        } else { // búsqueda por nombre
+                
+                let countryName = await Country.findAll({
+                    include: { model: Activity },
+                    where: { name: { [Sequelize.Op.iLike]: `%${name}%` } }
+                })
+                return countryName ? res.json(countryName) : res.send(messge `Country Not Found`);
+                 /* res.status(404).json({
+                    error: ` no se encuentra ningun Pais con el nombre , ${name}`,
+                  }); */
             }
-        } catch (err) {
-            console.log('Error en búsqueda por Nombre');
-        }
 
-    }
-});
+        } catch (e) {
+            res.send(messge `Country Not Found`);
+            //res.status(505).send(e)
+            console.log(e)
+        }
+    });
 
 
 router.get('/:id', async (req, res) => {

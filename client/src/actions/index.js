@@ -92,7 +92,7 @@ export function getDetail(id) {
 // CREACIÓN DE ACTIVIDAD TURÍSTICA
 export function postActivity(payload) {
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/countries', payload);
+        const response = await axios.post('http://localhost:3001/activity', payload);
         return response;
     }
 }

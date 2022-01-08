@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
         //console.log(newActivity);
 
         //await
-        actDb.addCountry(newActivity);
+        await actDb.addCountry(newActivity);
 
         res.status(200).send('Successfully Created Activity')
 

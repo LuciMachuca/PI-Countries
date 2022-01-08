@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 // applyMiddleware -> me permite hacer llamados a apis externas / servidor con Redux a través de ACCIONES
-import { composeWithDevTools, composeWithDevtools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 // extención para poder ver todo en el browser
 import thunk from 'redux-thunk';
 import rootReducer from '../reducer/index';

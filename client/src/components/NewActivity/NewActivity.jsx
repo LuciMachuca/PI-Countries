@@ -7,15 +7,15 @@ import { postActivity, getCountries } from '../../actions/index';
 function validacion(input) {
     //const reg = new RegExp('^[0-9]+$');
     let errors = {}
-    if (!input.name) errors.name = 'Campo Requerido'
-    if (!input.pais) errors.pais = 'Campo Requerido'
+    if (!input.name) errors.name = 'Required Field'
+    if (!input.pais) errors.pais = 'Required Field'
     return errors
 }
 
 export default function NewActivity() {
 
     const dispatch = useDispatch()
-    const history = useHistory()   // para redireccionar una vez creado el poke -> voy a /home
+    const history = useHistory()   // para redireccionar una vez creada la actividad -> voy a /home
 
     let allCountries = useSelector(state => state.countries);
 
