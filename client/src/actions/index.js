@@ -62,7 +62,7 @@ export function orderByPopulation(payload){
 export function getName(country) {
     return async (dispatch) => {
         try {
-            var json = await axios.get(`http://localhost:3001/countries?name=${country}`);
+            var json = await axios.get(`http://localhost:3001/countries?name=${country}`, {});
             return dispatch({
                 type: 'GET_NAME',
                 payload: json.data
@@ -98,10 +98,5 @@ export function postActivity(payload) {
 }
 
 
-export function showActivities(payload){
-    return{
-        type: 'SHOW_ACTIVITIES',
-        payload
-    }
-}
+
 

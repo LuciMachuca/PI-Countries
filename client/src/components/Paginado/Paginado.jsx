@@ -1,4 +1,5 @@
 import React from "react";
+import './Paginado.css'
 
 
 //                             me los traigo como propiedades del otro componente (Home)

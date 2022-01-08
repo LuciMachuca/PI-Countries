@@ -72,11 +72,11 @@ export default function Home() {
     };
 
 
-    function orderByPopulation(e) { // ordenamiento por fuerza
+    function orderPopulation(e) { 
         dispatch(orderByPopulation(e.target.value))
         setPagActual(1);
         setOrder(e.target.value)
-    };
+    }; // VOLVER AL COMIENZO ---
 
      // *********** FILTRADO: Por CONTINENTE y por ACTIVIDAD TURÍSTICA  ****************
 
@@ -95,7 +95,7 @@ export default function Home() {
 
         <div>
 
-            <Link to='/countries'>Create Tourist Activity</Link>
+            <Link to='/activity'>Create Tourist Activity</Link>
 
             <h1>COUNTRIES APP</h1>
             <button onClick={e => handleClick(e)}>
@@ -121,7 +121,7 @@ export default function Home() {
                     />
                 ) : (
                     <SortSelect
-                        handleSort={orderByPopulation}
+                        handleSort={orderPopulation}
                         sortDescription="Order"
                     />
                 )}

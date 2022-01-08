@@ -17,7 +17,13 @@ export default function NewActivity() {
     const dispatch = useDispatch()
     const history = useHistory()   // para redireccionar una vez creado el poke -> voy a /home
 
-    const allCountries = useSelector(state => state.countries);
+    let allCountries = useSelector(state => state.countries);
+
+    let sortCountries = allCountries.sort(function (a, b) {
+        if (a.name > b.name) return 1;
+        if (b.name > a.name) return -1;
+        return 0;
+    }) 
 
     const [errors, setErrors] = useState({})
 
@@ -171,7 +177,7 @@ export default function NewActivity() {
                 <div>
                     <strong>Country </strong>
                     <select onChange={(e) => handleSelect(e)} className="pais" >
-                        {allCountries?.map((c) => {
+                        {sortCountries?.map((c) => {
 
                             return <option value={c.name}> {c.name} </option>
 
