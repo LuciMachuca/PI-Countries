@@ -9,6 +9,7 @@ import SortSelect from '../SortSelect/SortSelect';
 import Paginado from '../Paginado/Paginado.jsx';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
+import './Home.css';
 
 export default function Home() {
 
@@ -22,8 +23,9 @@ export default function Home() {
     // la 1ra pagina tiene q tener 9 paises y luego 10 x pag
 
     const [pagActual, setPagActual] = useState(1)
-    const [countriesPorPag, setCountriesPorPag] = useState(9)
+    const [countriesPorPag, setCountriesPorPag] = useState(10)
     //const primeraPag = 9
+
     const indexUltimoCountry = pagActual * countriesPorPag
     //  inicialmente 9   ->    1      *    10
 
@@ -149,13 +151,13 @@ export default function Home() {
 
                 </select>
 
-                <Paginado
+               v  <Paginado
                     countriesPorPag={countriesPorPag}
                     allCountries={allCountries.length}
                     paginado={paginado}
                 />
 
-                <div className='3'>
+                <div className='cardHome'>
                     {
                         countryPagActual?.map((el) => {
                             return (

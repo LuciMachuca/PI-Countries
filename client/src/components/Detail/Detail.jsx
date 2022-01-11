@@ -14,7 +14,7 @@ export default function Detail(props) {
     }, [dispatch])
 
     const detail = useSelector((state => state.detail))
-
+    //console.log(detail);
 
     return (
 
@@ -44,21 +44,26 @@ export default function Detail(props) {
 
                         <div className='lista'>
 
-                            <p>
-                                <h4>Capital</h4>
+
+                            <p> <h4>Capital</h4>
                                 <h6>{detail.capital}</h6></p>
 
-                            <p>   <h4>Subregion</h4>
+                            <p><h4>Subregion</h4>
                                 <h6>{detail.subregion}</h6></p>
 
-                            <p>  <h4>Area</h4>
+                            <p><h4>Area</h4>
                                 <h6>{detail.area}</h6></p>
 
-                            <p>  <h4>Population</h4>
+                            <p><h4>Population</h4>
                                 <h6>{detail.population}</h6></p>
 
-                            <p>  <h4>Tourist Activities</h4>
-                                <h6>{detail.activities}</h6></p>
+                            <h4>Tourist Activities</h4>
+
+                                {detail.activities &&
+                                detail.activities.map(a => (
+                                   <h6>{a.name}</h6>
+                                   ))}
+                            
 
 
                         </div>

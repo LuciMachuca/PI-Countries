@@ -1,0 +1,33 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin: 0px;
+    background-color: #F6DDCC;
+    border: 1px solid #90400C;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 0px rgb(128 128 128 / 45%);
+    color: #90400C;
+    text-decoration: none;
+    width: 200px;
+    transition: .4s;
+    height: 220px;
+    
+    
+}
+
+
+
+.img{
+    height: 120px;
+    width: 200px;
+    margin-bottom: 2rem;
+}
+
+.namet{
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: none;
+}

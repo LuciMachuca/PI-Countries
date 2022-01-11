@@ -1,5 +1,5 @@
 import React from 'react';
-//import './Card.css'
+import './Card.css'
 
 export default function Card({ name, imgbandera, continents }) {
     // no necesito traerme ningún estado xq ya tengo la lógica en el Home

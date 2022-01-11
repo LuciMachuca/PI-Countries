@@ -1,0 +1,22 @@
+.home{
+    background-color: aqua;
+}
+
+.cardHome{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 17rem);
+    gap: 4rem;
+    margin-top: 2rem;
+    
+    
+}
+
+
+
+.cardsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
