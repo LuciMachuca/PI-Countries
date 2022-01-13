@@ -8,7 +8,7 @@ export default function Card({ name, imgbandera, continents }) {
 
         <div className='card'>
 
-            <h2 className='namet' >{name}</h2>
+            <h3 className='namet' >{name}</h3>
             <img className='img' src={imgbandera} alt={name} />
             <h5>{continents}</h5>
 

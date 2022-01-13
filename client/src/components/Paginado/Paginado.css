@@ -1,6 +1,15 @@
+.paginado {
+    position:relative;
+    align-content: center;
+    width: auto;
+}
+
 .number {
     list-style: none;
     display: inline-block;
+    border-radius: 2px;
+    background-color: hsla(0,0%,100%,-0.93);
+    font-weight: 800;
 }
 
 .number p {

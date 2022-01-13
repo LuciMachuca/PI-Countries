@@ -1,0 +1,22 @@
+.input{
+    width: 50%;
+    
+    height: 23px;
+    
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: hsla(0,0%,100%,-0.93);
+}
+
+.x {
+    width: 68px;
+    min-width: 55px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    background-color: hsla(0,0%,100%,-0.93);
+    border: solid black;
+}

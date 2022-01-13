@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActivity, getCountries } from '../../actions/index';
+import './NewActivity.css';
 
 
 function validacion(input) {
@@ -97,7 +98,7 @@ export default function NewActivity() {
 
     return (
 
-        <div>
+        <div className='todo'>
             <Link to='/home'> <button className='boton'>Go Back</button></Link>
             <h2 className='crea'>Create Your Tourist Activity! </h2>
 
@@ -135,46 +136,47 @@ export default function NewActivity() {
                         type='number'
                         placeholder="1 - 5"
                         step="0.1"
-                        min='1'
+                        min='0.1'
                         max='5'
                         value={input.difficulty}
                         name='difficulty'
                         onChange={e => handleChange(e)} />
                 </div>
 
-                <div>
+                <div className='checkbox'>
                 <strong>Season </strong>
-                    <label><input
+                    <label className='content-input'><input
                         type='checkbox'
                         name='Winter'
                         value='Winter'
                         onChange={e => handleCheck(e)} />Winter
-                    </label>
+                    <i></i></label>
 
-                    <label><input
+                    <label className='content-input'><input
                         type='checkbox'
                         name='Autumn'
                         value='Autumn'
                         onChange={e => handleCheck(e)} />Autumn
-                    </label>
+                    <i></i></label>
 
-                    <label><input
+                    <label className='content-input'><input
                         type='checkbox'
                         name='Spring'
                         value='Spring'
                         onChange={e => handleCheck(e)} />Spring
-                    </label>
+                    <i></i></label>
 
-                    <label><input
+                    <label className='content-input'><input
                         type='checkbox'
                         name='Summer'
                         value='Summer'
+                        id='Summer' 
                         onChange={e => handleCheck(e)} />Summer
-                    </label>
+                    <i></i></label>
                 </div>
 
 
-                <div>
+                <div className='select'>
                     <strong>Country </strong>
                     <select onChange={(e) => handleSelect(e)} className="pais" >
                         {sortCountries?.map((c) => {
@@ -201,7 +203,7 @@ export default function NewActivity() {
                 return (
                     <div >
                         <h5 className='countries'>{el}</h5>
-                        <button className='boton borrar' onClick={() => handleDeleteCountries(el)}>X</button>
+                        <button className='boton' onClick={() => handleDeleteCountries(el)}>X</button>
 
                     </div>
                 )

@@ -1,0 +1,131 @@
+input{
+    border-radius: 4px;
+    font-size: 14px;
+    border: solid black;
+    font-weight: 600;
+    background-color: hsla(0,0%,100%,.07);
+    cursor: pointer;
+    margin: 3px;
+    font-family: 
+'Quicksand', sans-serif;
+}
+
+.boton{
+    
+
+    width: auto;
+    min-width: 150px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,.07);
+    border-radius: 8px;
+    font-size: 14px;
+    color: black;
+    border: solid black;
+    font-weight: 600;
+   cursor: pointer;
+    margin: 30px;
+    margin-top: 70px;
+    font-family: 
+'Quicksand', sans-serif;
+}
+
+select{
+    border-radius: 4px;
+    font-size: 14px;
+    border: solid black;
+    font-weight: 600;
+    
+    cursor: pointer;
+    margin: 10px;
+
+    appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+  display: inline-block;
+padding: 2px 10px;
+  height: 30px;
+  outline: 0; 
+  border: 0;
+border-radius: 8px;
+background:hsla(0,0%,100%,.07);
+color: rgb(33, 33, 33);
+
+color: black;
+font-family: 
+'Quicksand', sans-serif;
+border:solid black;
+  position: relative;
+  transition: all 0.25s ease;
+    
+}
+
+.select select:hover{
+    background: #54EE6F  ;
+    font-family: 
+'Quicksand', sans-serif;
+font-weight: 600;
+    }
+
+ 
+
+
+.content-input input,
+
+.content-input input{
+	visibility: hidden;
+	position: absolute;
+	right: 0;
+    margin: 3px;
+}
+
+.content-input{
+	position: relative;
+	margin-bottom: 50px;
+	padding:5px 10px 20px 50px; /* Damos un padding de 60px para posicionar 
+        el elemento <i> en este espacio*/
+	display:inline;
+    margin: 3px;
+}
+ 
+/* Estas reglas se aplicarán a todos las elementos i 
+después de cualquier input*/
+.content-input input + i{
+       background: hsla(0,0%,100%,.07);
+       border:2px solid rgba(0,0,0,0.2);
+       position: absolute; 
+       left: 5px;
+       top: 5px;
+       margin: 3px;
+}
+
+.content-input input[type=checkbox ] + i{
+	width: 30px;
+	height: 15px;
+	border-radius: 15px;
+    margin: 3px;
+    top: 3px
+}
+
+.content-input input[type=checkbox] + i:before{
+	content: ''; /* No hay contenido */
+	width: 15px;
+	height: 15px;
+	background: black;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	-webkit-box-shadow: 3px 0 3px 0 rgba(0,0,0,0.2);
+	box-shadow: 6px 0 6px 0 rgba(0,0,0,0.2);
+}
+
+.content-input input[type=checkbox]:checked + i:before{
+	left: 22px;
+	-webkit-box-shadow: -3px 0 3px 0 rgba(0,0,0,0.2);
+	box-shadow: 3px 0 -3px 0 rgba(0,0,0,0.2);
+}
+ 
+.content-input input[type=checkbox]:checked + i{
+ background: #54EE6F   ;
+}

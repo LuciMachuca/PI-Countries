@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions/index';
+import './Detail.css'
 
 
 export default function Detail(props) {
@@ -30,40 +31,36 @@ export default function Detail(props) {
 
                         <div className='divNuevo'>
                             <img className='imgbandera' src={detail.imgbandera} alt='ups! Esta imagen no funciona' width="200px" height="150px" />
-                            <div className='pdes'>
-                                <h4>ID </h4>
-                                <p>{detail.id}</p>
-
-                                <h4>CONTINENT </h4>
-                                <p>{detail.continents}</p>
-                            </div>
-
-
                         </div>
 
 
                         <div className='lista'>
 
+                            <p> <h4>ID</h4>
+                                <h5>{detail.id}</h5></p>
+
+                            <p> <h4>CONTINENT</h4>
+                                <h5>{detail.continents}</h5></p>
 
                             <p> <h4>Capital</h4>
-                                <h6>{detail.capital}</h6></p>
+                                <h5>{detail.capital}</h5></p>
 
                             <p><h4>Subregion</h4>
-                                <h6>{detail.subregion}</h6></p>
+                                <h5>{detail.subregion}</h5></p>
 
                             <p><h4>Area</h4>
-                                <h6>{detail.area}</h6></p>
+                                <h5>{detail.area}</h5></p>
 
                             <p><h4>Population</h4>
-                                <h6>{detail.population}</h6></p>
+                                <h5>{detail.population}</h5></p>
 
-                            <h4>Tourist Activities</h4>
+                            <p><h4>Tourist Activities</h4>
 
                                 {detail.activities &&
-                                detail.activities.map(a => (
-                                   <h6>{a.name}</h6>
-                                   ))}
-                            
+                                    detail.activities.map(a => (
+                                        <h5>{a.name}</h5>
+                                    ))}</p>
+
 
 
                         </div>

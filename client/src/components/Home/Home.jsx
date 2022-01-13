@@ -49,7 +49,7 @@ export default function Home() {
         dispatch(listActivity())
     }, []);   // Listado de Actividades para el Filtrado
 
-// ************  SETEADO DE TODAS LAS CARD ************************
+    // ************  SETEADO DE TODAS LAS CARD ************************
     function handleClick(e) { // para el boton Volver a cargar Paises
         e.preventDefault();
         dispatch(getCountries()); // recetea -> vuelve a mostrar todo
@@ -57,8 +57,8 @@ export default function Home() {
 
 
     // *********** ORDENAMIENTO: ASC Y DESC alfabéticamente y por población  ****************
-    const [ order, setOrder ] = useState('');
-    const [ sort, setSort ] = useState('Alphabetically');
+    const [order, setOrder] = useState('');
+    const [sort, setSort] = useState('Alphabetically');
 
 
     function handleSort(e) {
@@ -74,15 +74,15 @@ export default function Home() {
     };
 
 
-    function orderPopulation(e) { 
+    function orderPopulation(e) {
         dispatch(orderByPopulation(e.target.value))
         setPagActual(1);
         setOrder(e.target.value)
     }; // VOLVER AL COMIENZO ---
 
-     // *********** FILTRADO: Por CONTINENTE y por ACTIVIDAD TURÍSTICA  ****************
+    // *********** FILTRADO: Por CONTINENTE y por ACTIVIDAD TURÍSTICA  ****************
 
-     
+
     function handleFilterByContinents(e) {
         dispatch(filterByContinents(e.target.value))
         setPagActual(1);
@@ -95,63 +95,75 @@ export default function Home() {
 
     return (
 
-        <div>
+        <div className='fondo'>
 
-            <Link to='/activity'>Create Tourist Activity</Link>
+            <div className='barraPrincipal'>
 
-            <h1>COUNTRIES APP</h1>
-            <button onClick={e => handleClick(e)}>
-            Refresh
-            </button>
+                <div className='volver'>
+                    <button className='bp' onClick={e => handleClick(e)}>
+                        Refresh
+                    </button>
+                </div>
 
-            <div className='search'>
-                <SearchBar />
-            </div>
+                <div className='search'>
+                    <SearchBar />
+                </div>
 
-            <div className='1'>
+                <div className='creacion'>
+                    <Link to='/activity'><button className="bp">Create Tourist Activity</button></Link>
+                </div>
 
-                <button
-                    className="select1"
-                    value={sort}
-                    onClick={(e) => handleSort(e)}
-                >{sort}</button>
-
-                { sort === "Alphabetically" ? (
-                    <SortSelect
-                        handleSort={orderByCountry}
-                        sortDescription="Order"
-                    />
-                ) : (
-                    <SortSelect
-                        handleSort={orderPopulation}
-                        sortDescription="Order"
-                    />
-                )}
+                </div>
 
 
-                <select className="select2" onChange={e => handleFilterByContinents(e)}>
-                <option value= 'All'> Continents... </option>
-                    <option value= 'Americas'>Americas</option>
-                    <option value= 'Europe'>Europe</option>
-                    <option value= 'Africa'>Africa</option>
-                    <option value= 'Oceania'>Oceania</option> 
-                    <option value= 'Antarctic'>Antarctic</option>
-                    <option value= 'Asia'>Asia</option>
-
-                </select>
+                <h2>COUNTRIES APP</h2>
 
 
-                <select className="select2" onChange={e => handleFilterByActivity(e)}>
-                    <option value='All'>Tourist Activities ...</option>
-                    {activity &&
-                        activity.map(el => (
-                            <option
-                                value={el.name}>{el.name}</option>
-                        ))}
+                <div className='select'>
 
-                </select>
+                    <button
+                        className="bp"
+                        value={sort}
+                        onClick={(e) => handleSort(e)}
+                    >{sort}</button>
 
-               v  <Paginado
+                    {sort === "Alphabetically" ? (
+                        <SortSelect
+                            handleSort={orderByCountry}
+                            sortDescription="Order"
+                        />
+                    ) : (
+                        <SortSelect
+                            handleSort={orderPopulation}
+                            sortDescription="Order"
+                        />
+                    )}
+
+
+                    <select className="select1" onChange={e => handleFilterByContinents(e)}>
+                        <option value='All'> Continents... </option>
+                        <option value='Americas'>Americas</option>
+                        <option value='Europe'>Europe</option>
+                        <option value='Africa'>Africa</option>
+                        <option value='Oceania'>Oceania</option>
+                        <option value='Antarctic'>Antarctic</option>
+                        <option value='Asia'>Asia</option>
+
+                    </select>
+
+
+                    <select className="select2" onChange={e => handleFilterByActivity(e)}>
+                        <option value='All'>Tourist Activities ...</option>
+                        {activity &&
+                            activity.map(el => (
+                                <option
+                                    value={el.name}>{el.name}</option>
+                            ))}
+
+                    </select>
+                </div>
+
+                <Paginado
                     countriesPorPag={countriesPorPag}
                     allCountries={allCountries.length}
                     paginado={paginado}
@@ -172,11 +184,11 @@ export default function Home() {
 
                         })
                     }
+
+
                 </div>
 
+
             </div>
-
-
-        </div>
-    )
+            )
 }
