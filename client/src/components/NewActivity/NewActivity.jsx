@@ -5,10 +5,18 @@ import { postActivity, getCountries } from '../../actions/index';
 import './NewActivity.css';
 
 
+
+
 function validacion(input) {
-    //const reg = new RegExp('^[0-9]+$');
-    let errors = {}
-    if (!input.name) errors.name = 'Required Field'
+    
+    let errors = {};
+    let nameTest = /^[a-zA-ZA-y\s]{3,80}$/; // solo letras, de 3 a 80 caracteres
+
+    if (!input.name ) errors.name = 'Required Field'
+    if (!nameTest.test(input.name.trim()) ) errors.name = 'This Field Only Supports Letters ( 3 - 80 )'
+    if (!input.difficulty) errors.difficulty = 'Required Field'
+    if (!input.duration) errors.duration = 'Required Field'
+    if (!input.season) errors.season = 'Required Field'
     if (!input.pais) errors.pais = 'Required Field'
     return errors
 }
@@ -24,7 +32,7 @@ export default function NewActivity() {
         if (a.name > b.name) return 1;
         if (b.name > a.name) return -1;
         return 0;
-    }) 
+    })
 
     const [errors, setErrors] = useState({})
 
@@ -110,6 +118,7 @@ export default function NewActivity() {
                         type='text'
                         value={input.name}
                         name='name'
+                        autoComplete='off'
                         onChange={e => handleChange(e)} />
                     {errors.name && (
                         <p>{errors.name}</p>
@@ -128,6 +137,10 @@ export default function NewActivity() {
                         value={input.duration}
                         name='duration'
                         onChange={e => handleChange(e)} />
+
+                    {errors.duration && (
+                        <p>{errors.duration}</p>
+                    )}
                 </div>
 
                 <div>
@@ -141,38 +154,46 @@ export default function NewActivity() {
                         value={input.difficulty}
                         name='difficulty'
                         onChange={e => handleChange(e)} />
+
+                    {errors.difficulty && (
+                        <p>{errors.difficulty}</p>
+                    )}
                 </div>
 
                 <div className='checkbox'>
-                <strong>Season </strong>
+                    <strong>Season </strong>
                     <label className='content-input'><input
                         type='checkbox'
                         name='Winter'
                         value='Winter'
                         onChange={e => handleCheck(e)} />Winter
-                    <i></i></label>
+                        <i></i></label>
 
                     <label className='content-input'><input
                         type='checkbox'
                         name='Autumn'
                         value='Autumn'
                         onChange={e => handleCheck(e)} />Autumn
-                    <i></i></label>
+                        <i></i></label>
 
                     <label className='content-input'><input
                         type='checkbox'
                         name='Spring'
                         value='Spring'
                         onChange={e => handleCheck(e)} />Spring
-                    <i></i></label>
+                        <i></i></label>
 
                     <label className='content-input'><input
                         type='checkbox'
                         name='Summer'
                         value='Summer'
-                        id='Summer' 
+                        id='Summer'
                         onChange={e => handleCheck(e)} />Summer
-                    <i></i></label>
+                        <i></i></label>
+
+                    {errors.season && (
+                        <p>{errors.season}</p>
+                    )}
                 </div>
 
 
@@ -193,9 +214,14 @@ export default function NewActivity() {
 
                 </div>
 
-                {errors.hasOwnProperty('name') || errors.hasOwnProperty('pais') ?
-                    <p> Please Complete the Required Fields </p> :
-                    <button type='submit' className='boton'> To Create! </button>}
+                {
+                    errors.hasOwnProperty('name') ||
+                        errors.hasOwnProperty('difficulty') ||
+                        errors.hasOwnProperty('duration') ||
+                        errors.hasOwnProperty('season') ||
+                        errors.hasOwnProperty('pais') ?
+                        <p> Please Complete the Required Fields </p> :
+                        <button type='submit' className='boton'> To Create! </button>}
 
             </form>
 

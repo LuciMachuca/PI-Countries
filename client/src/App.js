@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
 import NewActivity from './components/NewActivity/NewActivity';
 import Detail from './components/Detail/Detail';
-//import SearchBar from './components/SearchBar/SearchBar';
+
 
 function App() {
   return (
@@ -18,7 +18,6 @@ function App() {
         <Route path='/home' component={Home} />
         <Route exact path='/countries/:id' component={Detail} />
         <Route path='/activity' component={NewActivity} />
-       
 
       </Switch>
 

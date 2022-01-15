@@ -7,7 +7,6 @@ export default function SearchBar (){
     
     const dispatch = useDispatch()
     const [ country, setCountry ] = useState('')
-    //const [ valida, setValida ] = useState('') // por si ponen un pais incorrecto
 
     function handleInputChange(e){
         e.preventDefault()

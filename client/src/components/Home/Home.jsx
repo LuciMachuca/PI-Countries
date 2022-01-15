@@ -93,6 +93,8 @@ export default function Home() {
         setPagActual(1);
     };
 
+   
+
     return (
 
         <div className='fondo'>
@@ -109,86 +111,87 @@ export default function Home() {
                     <SearchBar />
                 </div>
 
+
                 <div className='creacion'>
                     <Link to='/activity'><button className="bp">Create Tourist Activity</button></Link>
                 </div>
 
-                </div>
+            </div>
 
 
-                <h2>COUNTRIES APP</h2>
+            <h2>COUNTRIES APP</h2>
 
 
-                <div className='select'>
+            <div className='select'>
 
-                    <button
-                        className="bp"
-                        value={sort}
-                        onClick={(e) => handleSort(e)}
-                    >{sort}</button>
+                <button
+                    className="bp"
+                    value={sort}
+                    onClick={(e) => handleSort(e)}
+                >{sort}</button>
 
-                    {sort === "Alphabetically" ? (
-                        <SortSelect
-                            handleSort={orderByCountry}
-                            sortDescription="Order"
-                        />
-                    ) : (
-                        <SortSelect
-                            handleSort={orderPopulation}
-                            sortDescription="Order"
-                        />
-                    )}
-
-
-                    <select className="select1" onChange={e => handleFilterByContinents(e)}>
-                        <option value='All'> Continents... </option>
-                        <option value='Americas'>Americas</option>
-                        <option value='Europe'>Europe</option>
-                        <option value='Africa'>Africa</option>
-                        <option value='Oceania'>Oceania</option>
-                        <option value='Antarctic'>Antarctic</option>
-                        <option value='Asia'>Asia</option>
-
-                    </select>
+                {sort === "Alphabetically" ? (
+                    <SortSelect
+                        handleSort={orderByCountry}
+                        sortDescription="Order"
+                    />
+                ) : (
+                    <SortSelect
+                        handleSort={orderPopulation}
+                        sortDescription="Order"
+                    />
+                )}
 
 
-                    <select className="select2" onChange={e => handleFilterByActivity(e)}>
-                        <option value='All'>Tourist Activities ...</option>
-                        {activity &&
-                            activity.map(el => (
-                                <option
-                                    value={el.name}>{el.name}</option>
-                            ))}
+                <select className="select1" onChange={e => handleFilterByContinents(e)}>
+                    <option value='All'> Continents... </option>
+                    <option value='Americas'>Americas</option>
+                    <option value='Europe'>Europe</option>
+                    <option value='Africa'>Africa</option>
+                    <option value='Oceania'>Oceania</option>
+                    <option value='Antarctic'>Antarctic</option>
+                    <option value='Asia'>Asia</option>
 
-                    </select>
-                </div>
-
-                <Paginado
-                    countriesPorPag={countriesPorPag}
-                    allCountries={allCountries.length}
-                    paginado={paginado}
-                />
-
-                <div className='cardHome'>
-                    {
-                        countryPagActual?.map((el) => {
-                            return (
-                                <fragment>
-                                    <div className='2'>
-                                        <Link to={'/countries/' + el.id} >
-                                            <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} key={el.id} />
-                                        </Link>
-                                    </div>
-                                </fragment>
-                            );
-
-                        })
-                    }
+                </select>
 
 
-                </div>
+                <select className="select2" onChange={e => handleFilterByActivity(e)}>
+                    <option value='All'>Tourist Activities ...</option>
+                    {activity &&
+                        activity.map(el => (
+                            <option
+                                value={el.name}>{el.name}</option>
+                        ))}
+
+                </select>
+            </div>
+
+            <Paginado
+                countriesPorPag={countriesPorPag}
+                allCountries={allCountries.length}
+                paginado={paginado}
+            />
+
+            <div className='cardHome'>
+                {
+                    countryPagActual?.map((el) => {
+                        return (
+                            <fragment>
+                                <div className='2'>
+                                    <Link to={'/countries/' + el.id} >
+                                        <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} key={el.id} />
+                                    </Link>
+                                </div>
+                            </fragment>
+                        );
+
+                    })
+                }
 
 
             </div>
-            )
+
+
+        </div>
+    )
 }

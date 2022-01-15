@@ -89,7 +89,7 @@ function rootReducer(state = initialState, action) {
             //const pokeName = action.payload === null  || action.payload === [] || action.payload.length === 0 ? state.allPokemons : action.payload;
             return {
                 ...state,
-                countries: action.payload  
+                countries: action.payload   
             }
 
         case "GET_DETAIL":

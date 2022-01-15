@@ -3,7 +3,7 @@
 .cardHome{
     display:grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 17rem);
+    grid-template-columns: repeat(auto-fill, 12rem);
     gap: 4rem;
     margin-top: 2rem;
     
@@ -16,7 +16,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+    background-color: rgb(33, 33, 33);
+    border-radius: 8px;
 }
 
 .bp{
@@ -113,14 +114,6 @@
   padding-top: 30px;
 }
 
-.cardsContainer{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: rgb(33, 33, 33);
-  border-radius: 8px;
-  
-}
 
 
   

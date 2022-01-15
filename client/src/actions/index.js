@@ -68,7 +68,8 @@ export function getName(country) {
                 payload: json.data
             })
         } catch (error) {
-            console.log('Error en la acción del SearchBar')
+            alert('That Country Does Not Exist, Try Again ...')
+            console.log(error)
         }
     }
 }

@@ -29,15 +29,13 @@ router.get('/', async (req, res) => {
                     include: { model: Activity },
                     where: { name: { [Sequelize.Op.iLike]: `%${name}%` } }
                 })
-                return countryName ? res.json(countryName) : res.send(messge `Country Not Found`);
-                 /* res.status(404).json({
-                    error: ` no se encuentra ningun Pais con el nombre , ${name}`,
-                  }); */
+                countryName.length > 0 ? 
+                res.status(200).send(countryName) : 
+                res.status(400).send(`Country Not Found`);
+    
             }
 
         } catch (e) {
-            res.send(messge `Country Not Found`);
-            //res.status(505).send(e)
             console.log(e)
         }
     });
