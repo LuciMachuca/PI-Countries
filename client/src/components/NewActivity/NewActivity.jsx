@@ -8,16 +8,15 @@ import './NewActivity.css';
 
 
 function validacion(input) {
-    
+
     let errors = {};
     let nameTest = /^[a-zA-ZA-y\s]{3,80}$/; // solo letras, de 3 a 80 caracteres
 
-    if (!input.name ) errors.name = 'Required Field'
-    if (!nameTest.test(input.name.trim()) ) errors.name = 'This Field Only Supports Letters ( 3 - 80 )'
-    if (!input.difficulty) errors.difficulty = 'Required Field'
-    if (!input.duration) errors.duration = 'Required Field'
-    if (!input.season) errors.season = 'Required Field'
-    if (!input.pais) errors.pais = 'Required Field'
+    if (!input.name) errors.name = 'Required Field'
+    else if (!nameTest.test(input.name.trim())) errors.name = 'This Field Only Supports Letters ( 3 - 80 )'
+    else if (!input.difficulty) errors.difficulty = 'Required Field'
+    else if (input.difficulty < 0 || input.difficulty > 5) errors.difficulty = 'You must put a number between 0 and 5'
+    else if (!input.pais) errors.pais = 'Required Field'
     return errors
 }
 
@@ -28,6 +27,7 @@ export default function NewActivity() {
 
     let allCountries = useSelector(state => state.countries);
 
+    // ordeno los paises alfabéticamente para q sea más facil encontrarlos en el select
     let sortCountries = allCountries.sort(function (a, b) {
         if (a.name > b.name) return 1;
         if (b.name > a.name) return -1;
@@ -46,7 +46,7 @@ export default function NewActivity() {
 
     })
 
-    useEffect(() => {  // cuando el componente se monte -> traigo todo
+    useEffect(() => {  // cuando el componente se monte -> me traigo los paises
         dispatch(getCountries())
     }, [dispatch]);
 
@@ -55,20 +55,18 @@ export default function NewActivity() {
         setInput({
             ...input,
             [e.target.name]: e.target.value
-        }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
+        }) // DINÁMICO -> va a ir tomando los valores de los inputs, los va verificando y modificando según lo escrito
+        setErrors(validacion({
+            ...input,
+            [e.target.name]: e.target.value
+        }));
     }
 
     function handleSelect(e) {
         setInput({
             ...input,
             pais: [...input.pais, e.target.value]
-
         })
-        setErrors(validacion({
-            ...input,
-            [e.target.name]: e.target.value
-        }));
-        console.log(input)
     }
 
     function handleCheck(e) {
@@ -81,7 +79,6 @@ export default function NewActivity() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        //console.log(input);
         dispatch(postActivity(input))
         alert('Successfully Created Activity!')
         setInput({   // para q al terminar me deje todos los input en blanco nuevamente
@@ -191,9 +188,9 @@ export default function NewActivity() {
                         onChange={e => handleCheck(e)} />Summer
                         <i></i></label>
 
-                    {errors.season && (
+                   {/*  {errors.season && (
                         <p>{errors.season}</p>
-                    )}
+                    )} */}
                 </div>
 
 
@@ -217,11 +214,16 @@ export default function NewActivity() {
                 {
                     errors.hasOwnProperty('name') ||
                         errors.hasOwnProperty('difficulty') ||
-                        errors.hasOwnProperty('duration') ||
-                        errors.hasOwnProperty('season') ||
+                       /*  errors.hasOwnProperty('season') || */
                         errors.hasOwnProperty('pais') ?
                         <p> Please Complete the Required Fields </p> :
                         <button type='submit' className='boton'> To Create! </button>}
+
+              {/*   <button
+                    disabled={errors.name || errors.difficulty || errors.pais}
+                    type='submit' className='boton' >
+                    To Create!
+                </button> */}
 
             </form>
 
@@ -229,7 +231,7 @@ export default function NewActivity() {
                 return (
                     <div >
                         <h5 className='countries'>{el}</h5>
-                        <button className='boton' onClick={() => handleDeleteCountries(el)}>X</button>
+                        <button className='botonCerrar' onClick={() => handleDeleteCountries(el)}>X</button>
 
                     </div>
                 )

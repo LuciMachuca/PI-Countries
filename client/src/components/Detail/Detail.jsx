@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions/index';
@@ -12,7 +12,7 @@ export default function Detail(props) {
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
-    }, [dispatch])
+    }, [props.match.params.id, dispatch]) // x los warnings
 
     const detail = useSelector((state => state.detail))
     //console.log(detail);

@@ -47,7 +47,7 @@ export default function Home() {
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listActivity())
-    }, []);   // Listado de Actividades para el Filtrado
+    }, [dispatch]);   // Listado de Actividades para el Filtrado
 
     // ************  SETEADO DE TODAS LAS CARD ************************
     function handleClick(e) { // para el boton Volver a cargar Paises

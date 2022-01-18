@@ -11,8 +11,7 @@ input{
 }
 
 .boton{
-    
-
+   
     width: auto;
     min-width: 150px;
     padding: 5px 10px;
@@ -24,7 +23,24 @@ input{
     font-weight: 600;
    cursor: pointer;
     margin: 30px;
-    margin-top: 70px;
+    margin-top: 20px;
+    font-family: 
+'Quicksand', sans-serif;
+}
+
+.botonCerrar{
+    
+    min-width: 20px;
+    padding: 1px;
+    background-color: hsla(0,0%,100%,.07);
+    border-radius: 8px;
+    font-size: 14px;
+    color: black;
+    border: solid black;
+    font-weight: 600;
+   cursor: pointer;
+    margin: 5px;
+    margin-top: 2px;
     font-family: 
 'Quicksand', sans-serif;
 }

@@ -3,6 +3,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // extención para poder ver todo en el browser
 import thunk from 'redux-thunk';
+// para poder enviar acciones asíncronas y efectos secundarios
+// facilita el envío de acciones que siguen el ciclo de vida de una solicitud a una API externa.
 import rootReducer from '../reducer/index';
 
 
