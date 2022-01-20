@@ -6,11 +6,7 @@ const { Country, Activity } = require('../db');
 
 const router = Router();
 
-router.get('/', async (req, res, next) => {
-
-    const { name } = req.query;
-
-    if (!name) {
+router.get('/', async (req, res, next) => {  // para LISTAR LAS ACTIVIDADES en el filtro por actividad
 
         try {
 
@@ -23,37 +19,6 @@ router.get('/', async (req, res, next) => {
         } catch (err) {
             console.log('Error en GET Activity');
         }
-
-
-    } else {
-
-        try {
-
-            let arrayActivities = await Activity.findAll({
-                attributes: ["name"],
-                include: {
-                    model: Country,
-                    attributes: ['name', 'imgbandera', 'continents'],
-                    through: {
-                        attributes: [],
-                    }
-                },
-
-                where: { name: { [Sequelize.Op.iLike]: `${name}` } }
-            });
-
-            if (arrayActivities <= 0) {
-                res.status(200).send('No existe esa actividad')
-            } else {
-
-                res.status(200).send(arrayActivities);
-            }
-
-        } catch (err) {
-            console.log('Error en Activity por Nombre');
-        }
-
-    }
 });
 
 // ---------------------------------------------------------------------------------------

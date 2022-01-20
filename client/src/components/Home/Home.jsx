@@ -160,7 +160,7 @@ export default function Home() {
                     {activity &&
                         activity.map(el => (
                             <option
-                                value={el.name}>{el.name}</option>
+                                value={el.name} key={el.name}>{el.name}</option>
                         ))}
 
                 </select>
@@ -176,13 +176,13 @@ export default function Home() {
                 {
                     countryPagActual?.map((el) => {
                         return (
-                            <fragment>
+                            
                                 <div className='2'>
                                     <Link to={'/countries/' + el.id} >
-                                        <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} key={el.id} />
+                                        <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} /* population={el.population}  */key={el.id} />
                                     </Link>
                                 </div>
-                            </fragment>
+                            
                         );
 
                     })

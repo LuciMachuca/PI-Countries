@@ -15,7 +15,7 @@ function validacion(input) {
     if (!input.name) errors.name = 'Required Field'
     else if (!nameTest.test(input.name.trim())) errors.name = 'This Field Only Supports Letters ( 3 - 80 )'
     else if (!input.difficulty) errors.difficulty = 'Required Field'
-    else if (input.difficulty < 0 || input.difficulty > 5) errors.difficulty = 'You must put a number between 0 and 5'
+    else if (input.difficulty < 1 || input.difficulty > 5) errors.difficulty = 'You must put a number between 1 and 5'
     else if (!input.pais) errors.pais = 'Required Field'
     return errors
 }
@@ -146,7 +146,7 @@ export default function NewActivity() {
                         type='number'
                         placeholder="1 - 5"
                         step="0.1"
-                        min='0.1'
+                        min='1'
                         max='5'
                         value={input.difficulty}
                         name='difficulty'
@@ -199,7 +199,7 @@ export default function NewActivity() {
                     <select onChange={(e) => handleSelect(e)} className="pais" >
                         {sortCountries?.map((c) => {
 
-                            return <option value={c.name}> {c.name} </option>
+                            return <option value={c.name} key={c.name}> {c.name} </option>
 
                         })}
 
@@ -214,7 +214,6 @@ export default function NewActivity() {
                 {
                     errors.hasOwnProperty('name') ||
                         errors.hasOwnProperty('difficulty') ||
-                       /*  errors.hasOwnProperty('season') || */
                         errors.hasOwnProperty('pais') ?
                         <p> Please Complete the Required Fields </p> :
                         <button type='submit' className='boton'> To Create! </button>}
@@ -230,7 +229,7 @@ export default function NewActivity() {
             {input.pais?.map(el => {
                 return (
                     <div >
-                        <h5 className='countries'>{el}</h5>
+                        <h5 className='countries' key={el}>{el}</h5>
                         <button className='botonCerrar' onClick={() => handleDeleteCountries(el)}>X</button>
 
                     </div>

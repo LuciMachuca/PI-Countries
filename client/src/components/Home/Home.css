@@ -108,11 +108,13 @@
 
 
 .fondo h2{
-  font-size: 50px;
+  
   line-height: 74px;
-  font-weight: 600;
+  
   color: black;
-  font-family: "Latin Modern Roman";
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: monospace;
+    font-weight: 900;
   
   padding-top: 30px;
 }
