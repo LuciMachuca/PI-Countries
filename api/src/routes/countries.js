@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
                 })
                 countryName.length > 0 ? 
                 res.status(200).send(countryName) : 
-                res.status(400).send(`Country Not Found`);
+                res.send(`Country Not Found`);
     
             }
 

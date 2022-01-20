@@ -7,9 +7,11 @@ import { getCountries, listActivity, filterByActivity, filterByContinents, order
 import { Link } from 'react-router-dom';
 import SortSelect from '../SortSelect/SortSelect';
 import Paginado from '../Paginado/Paginado.jsx';
-import Card from '../Card/Card';
+//import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
 import './Home.css';
+import CardList from '../CardList/CardList';
+import Error from '../Error/Error';
 
 export default function Home() {
 
@@ -93,7 +95,7 @@ export default function Home() {
         setPagActual(1);
     };
 
-   
+
 
     return (
 
@@ -173,22 +175,28 @@ export default function Home() {
             />
 
             <div className='cardHome'>
-                {
+                {/* {
                     countryPagActual?.map((el) => {
                         return (
-                            
-                                <div className='2'>
-                                    <Link to={'/countries/' + el.id} >
-                                        <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} /* population={el.population}  */key={el.id} />
-                                    </Link>
-                                </div>
-                            
+
+                            <div className='2'>
+                                <Link to={'/countries/' + el.id} >
+                                    <Card name={el.name} imgbandera={el.imgbandera} continents={el.continents} population={el.population} key={el.id} />
+                                </Link>
+                            </div>
+
                         );
 
                     })
-                }
 
-
+                } */}
+                <div className='2'>
+                    {
+                        allCountries === "Country Not Found" ? <Error /> : 
+                        
+                        <CardList country={countryPagActual} />
+                    }
+                </div>
             </div>
 
 

@@ -77,6 +77,13 @@ export default function NewActivity() {
         }
     }
 
+    /* function handleSelectEstaciones(e) {
+        setInput({
+            ...input,
+            [e.target.season]: e.target.value
+        })
+    } */
+
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(postActivity(input))
@@ -188,7 +195,7 @@ export default function NewActivity() {
                         onChange={e => handleCheck(e)} />Summer
                         <i></i></label>
 
-                   {/*  {errors.season && (
+                    {/*  {errors.season && (
                         <p>{errors.season}</p>
                     )} */}
                 </div>
@@ -208,35 +215,49 @@ export default function NewActivity() {
                         )}
 
                     </select >
-
                 </div>
 
-                {
-                    errors.hasOwnProperty('name') ||
-                        errors.hasOwnProperty('difficulty') ||
-                        errors.hasOwnProperty('pais') ?
-                        <p> Please Complete the Required Fields </p> :
-                        <button type='submit' className='boton'> To Create! </button>}
+                <div className='select'>
+                    <strong>Estaciones </strong>
+                    <select onChange={(e) => handleChange(e)} className="estaciones" value= {input.season} name="season">
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                    </select>
 
-              {/*   <button
+                </div>
+        
+
+                {
+        errors.hasOwnProperty('name') ||
+            errors.hasOwnProperty('difficulty') ||
+            errors.hasOwnProperty('pais') ?
+            <p> Please Complete the Required Fields </p> :
+            <button type='submit' className='boton'> To Create! </button>
+    }
+
+    {/*   <button
                     disabled={errors.name || errors.difficulty || errors.pais}
                     type='submit' className='boton' >
                     To Create!
                 </button> */}
 
-            </form>
+            </form >
 
-            {input.pais?.map(el => {
-                return (
-                    <div >
-                        <h5 className='countries' key={el}>{el}</h5>
-                        <button className='botonCerrar' onClick={() => handleDeleteCountries(el)}>X</button>
+    {
+        input.pais?.map(el => {
+            return (
+                <div >
+                    <h5 className='countries' key={el}>{el}</h5>
+                    <button className='botonCerrar' onClick={() => handleDeleteCountries(el)}>X</button>
 
-                    </div>
-                )
-            })}
+                </div>
+            )
+        })
+    }
 
-        </div>
+        </div >
 
 
 
