@@ -77,13 +77,6 @@ export default function NewActivity() {
         }
     }
 
-    /* function handleSelectEstaciones(e) {
-        setInput({
-            ...input,
-            [e.target.season]: e.target.value
-        })
-    } */
-
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(postActivity(input))
@@ -217,7 +210,7 @@ export default function NewActivity() {
                     </select >
                 </div>
 
-                <div className='select'>
+               {/*  <div className='select'>
                     <strong>Estaciones </strong>
                     <select onChange={(e) => handleChange(e)} className="estaciones" value= {input.season} name="season">
                         <option value="Autumn">Autumn</option>
@@ -226,7 +219,7 @@ export default function NewActivity() {
                         <option value="Summer">Summer</option>
                     </select>
 
-                </div>
+                </div> */}
         
 
                 {

@@ -41,8 +41,8 @@ let dataCountries = async () => {
         })
         return countryCreated;
       } catch (err) {
-        //console.log(err);
-        console.log('Error en filtrado de Info');
+        console.log(err);
+        //console.log('Error en filtrado de Info');
       }
     });
   } catch (error) {

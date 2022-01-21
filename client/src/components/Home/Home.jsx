@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 
 import { useEffect } from 'react'; //useEffect llena el estado cuando se monta el componente
 import { useState } from 'react';
 // useState -> funcion que nos devuelve un array con dos elem:  [state, metodo para mutarlo] 
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountries, listActivity, filterByActivity, filterByContinents, orderByPopulation, orderByCountries } from '../../actions/index';
+//import { getCountries, listActivity, filterByActivity, filterByContinents, orderByPopulation, orderByCountries } from '../../actions/actionsPromises';
 import { Link } from 'react-router-dom';
 import SortSelect from '../SortSelect/SortSelect';
 import Paginado from '../Paginado/Paginado.jsx';

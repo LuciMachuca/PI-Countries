@@ -91,6 +91,20 @@ export function getDetail(id) {
     }
 }
 
+/* export function getDetail(id){
+    return async function(dispatch){
+        return await fetch(`http://localhost:3001/countries/${id}`)
+        .then(response => response.json())
+        .then(json =>{
+            dispatch({
+                type: 'GET_DETAIL',
+                payload: json
+            })
+        }) 
+        .catch((error) => { console.log(error) })
+        }
+} */
+
 // CREACIÓN DE ACTIVIDAD TURÍSTICA
 export function postActivity(payload) {
     return async function (dispatch) {
