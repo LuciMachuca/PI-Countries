@@ -62,13 +62,13 @@ export default function Home() {
 
     // *********** ORDENAMIENTO: ASC Y DESC alfabéticamente y por población  ****************
     const [order, setOrder] = useState('');
-    const [sort, setSort] = useState('Alphabetically');
+    const [sort, setSort] = useState('Order Alphabetically');
 
 
     function handleSort(e) {
         e.preventDefault();
-        if (sort === "Alphabetically") setSort("By Number of Inhabitants");
-        if (sort === "By Number of Inhabitants") setSort("Alphabetically");
+        if (sort === "Order Alphabetically") setSort("Order by Number of Inhabitants");
+        if (sort === "Order by Number of Inhabitants") setSort("Order Alphabetically");
     }
 
     function orderByCountry(e) { // ordenamiento por nombre
@@ -124,6 +124,7 @@ export default function Home() {
 
 
             <h2>COUNTRIES APP</h2>
+           
 
 
             <div className='select'>
@@ -134,7 +135,7 @@ export default function Home() {
                     onClick={(e) => handleSort(e)}
                 >{sort}</button>
 
-                {sort === "Alphabetically" ? (
+                {sort === "Order Alphabetically" ? (
                     <SortSelect
                         handleSort={orderByCountry}
                         sortDescription="Order"
@@ -148,7 +149,7 @@ export default function Home() {
 
 
                 <select className="select1" onChange={e => handleFilterByContinents(e)}>
-                    <option value='All'> Continents... </option>
+                    <option value='All'> Filter By Continent... </option>
                     <option value='Americas'>Americas</option>
                     <option value='Europe'>Europe</option>
                     <option value='Africa'>Africa</option>
@@ -160,7 +161,7 @@ export default function Home() {
 
 
                 <select className="select2" onChange={e => handleFilterByActivity(e)}>
-                    <option value='All'>Tourist Activities ...</option>
+                    <option value='All'>Filter By Tourist Activities ...</option>
                     {activity &&
                         activity.map(el => (
                             <option

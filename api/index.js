@@ -31,23 +31,21 @@ let dataCountries = async () => {
           where: {
             id: c.cca3,
             name: c.name.common,
-            continents: c.region,
-            capital: c.capital ? c.capital[0] : 'There Is No Capital',
             imgbandera: c.flags.png,
-            subregion: c.subregion ? c.subregion : 'There Is No Subregion',
-            area: c.area, 
-            population: c.population
+            continents: c.region,
+            capital: c.capital ? c.capital[0] : 'no hay capital',
+            subregion: c.subregion ? c.subregion : 'no hay subregion',
+            area: parseInt(c.area),
+            population: parseInt(c.population)
           }
         })
         return countryCreated;
-      } catch (err) {
+      } catch (err){
         console.log(err);
-        //console.log('Error en filtrado de Info');
       }
     });
   } catch (error) {
-    //console.log(error);
-    console.error('Error en llamado a la Api');
+    console.error('Error:', error);
   }
 }
 

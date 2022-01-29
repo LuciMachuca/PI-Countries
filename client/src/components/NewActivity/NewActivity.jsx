@@ -210,7 +210,12 @@ export default function NewActivity() {
                     </select >
                 </div>
 
-               {/*  <div className='select'>
+
+{/* Hice un SELECT con las estaciones donde no me deje seleccionar mas de 1, ya que el ENUM + EL CHECK BOX me dejan
+seleccionar más de 1 pero en la db y en el registro de la actividad sólo se queda con 1 opción
+Finalmente me quedé con el check box xq quedó bien bonito. */} 
+
+                {/* <div className='select'>
                     <strong>Estaciones </strong>
                     <select onChange={(e) => handleChange(e)} className="estaciones" value= {input.season} name="season">
                         <option value="Autumn">Autumn</option>
